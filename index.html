@@ -1,0 +1,294 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet the Campus Leadership</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0 0 60px 0;
+            /* Rich academic dark slate blue gradient background */
+            background: linear-gradient(135deg, #0b132b 0%, #1c2541 50%, #0b132b 100%);
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        /* Connected Header Banner with Gold Accents */
+        header {
+            text-align: center;
+            padding: 40px 20px 30px 20px;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.9) 0%, rgba(28, 37, 65, 0.6) 100%);
+            border-bottom: 3px solid #d4af37;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            position: relative;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: #ffffff;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+        }
+
+        header p {
+            margin-top: 8px;
+            font-size: 1.1rem;
+            color: #d4af37; /* Gold subtitle text */
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* Structural Hierarchy Container with Central Connecting Line */
+        .hierarchy-wrapper {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px 20px;
+        }
+
+        /* Golden Vertical Line Connecting Title Down Through All Levels */
+        .hierarchy-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 3px;
+            background: linear-gradient(180deg, #d4af37 0%, rgba(212, 175, 55, 0.3) 90%, transparent 100%);
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+
+        .section-header-container {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            margin-top: 45px;
+            margin-bottom: 25px;
+        }
+
+        /* Connected Section Badges */
+        h2 {
+            display: inline-block;
+            color: #ffffff;
+            background: #0b132b;
+            padding: 8px 28px;
+            border-radius: 30px;
+            border: 2px solid #d4af37;
+            font-size: 1.4rem;
+            margin: 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Flex container for aligned leadership cards */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Elegant Glassmorphic Card Container */
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            width: 250px;
+            padding: 22px 15px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Beautiful Ornate Frame Style using image_0.png */
+        .framed-image {
+            display: block;
+            margin: 0 auto 12px auto;
+            border: 32px solid transparent;
+            border-image-source: url('image_0.png');
+            border-image-slice: 35 35 35 35 fill;
+            border-image-repeat: repeat;
+            width: 130px;
+            height: 165px;
+            object-fit: cover;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+            background-color: #ffffff;
+            padding: 6px;
+        }
+
+        .card h3 {
+            font-size: 1.15rem;
+            margin: 10px 0 4px 0;
+            color: #0b132b;
+            font-weight: 700;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #4a5568;
+            margin: 0;
+        }
+
+        .department-label {
+            font-weight: bold;
+            color: #1c2541;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Connected Header Title Section -->
+    <header>
+        <h1>Meet the Campus Leadership</h1>
+        <p>Official Directory of Administration, Deans, and Faculty</p>
+    </header>
+
+    <!-- Connected Structural Wrapper -->
+    <div class="hierarchy-wrapper">
+
+        <!-- University Level -->
+        <div class="section-header-container">
+            <h2>University Level</h2>
+        </div>
+        <div class="card-container">
+            <div class="card">
+                <img src="1.JFIF" alt="Nordy D. Siason Jr, edD, Ceso VI - University President" class="framed-image">
+                <h3>Nordy D. Siason Jr, edD, Ceso VI</h3>
+                <p>University President</p>
+            </div>
+        </div>
+
+        <!-- Campus Level -->
+        <div class="section-header-container">
+            <h2>Campus Administration</h2>
+        </div>
+        <div class="card-container">
+            <div class="card">
+                <img src="2.jfif" alt="Dr. Michael B. Dizon- Campus Administrator" class="framed-image">
+                <h3>Dr. John Smith</h3>
+                <p>Campus Administrator</p>
+            </div>
+            <div class="card">
+                <img src="3.jfif" alt=Melby P. Parreño - Administrative Officer" class="framed-image">
+                <h3>Mrs.Melby P. Parreño</h3>
+                <p>Administrative Officer</p>
+            </div>
+        </div>
+
+        <!-- Department Level: Deans -->
+        <div class="section-header-container">
+            <h2>Department Deans</h2>
+        </div>
+        <div class="card-container">
+            <div class="card">
+                <img src="4.jfif" alt="Dr. Wenda D. Panes  - Dean of College of Computer Studies" class="framed-image">
+                <h3>Dr. Wenda D. Panes</h3>
+                <p class="department-label">College of Informatic and Computing Innovation </p>
+                <p>Dean</p>
+            </div>
+            <div class="card">
+                <img src="5.jfif" alt="Dean, Agreculture [AG] - Dean of College of Agre culture" class="framed-image">
+                <h3>DR. Noli L. Gerona</h3>
+                <p class="department-label">Dean, Agreculture [AG]</p>
+                <p>Dean</p>
+            </div>
+            <div class="card">
+                <img src="6.jfif" alt="Dr. Rene T. Estomo- Dean of College of Education" class="framed-image">
+                <h3>Dr. Rene T. Estomo</h3>
+                <p class="department-label">College of Education</p>
+                <p>Dean</p>
+            </div>
+            <div class="card">
+                <img src="7.jfif" alt="DR.Janice H. Ching, [BSOA] college of Business, management [HM]" class="framed-image">
+                <h3>DR.Janice H. Ching</h3>
+                <p class="department-label">Dean, Office Administration [BSOA] / college of Business, management [HM]</p>
+                <p>Dean</p>
+            </div>
+
+
+        </div>
+
+        <!-- CICI Faculty Members and Staff -->
+        <div class="section-header-container">
+            <h2>CICI Faculty Members & Staff</h2>
+        </div>
+        <div class="card-container">
+            <div class="card">
+                <img src="4.jfif" alt="Dr. Wenda D. Panes" class="framed-image">
+                <h3>Dr. Wenda D. Panes</h3>
+                <p class="department-label">CICI FACULTY</p>
+                <p>Dean / Faculty
+CICI</p>
+            </div>
+            <div class="card">
+                <img src="9.JFIF" alt="Dr. Wenna J. Bulnes " class="framed-image">
+                <h3>Dr. Wenna J. Bulnes</h3>
+                <p class="department-label">CICI FACULTY</p>
+                
+            </div>
+            <div class="card">
+                <img src="10.JFIF" alt="Dr. Ian P. Sugatan" class="framed-image">
+                <h3>Dr. Ian P. Sugatan</h3>
+                <p class="department-label">CICI FACULTY</p>
+                
+            </div>
+               <div class="card">
+                <img src="11.jfif" alt="Dr. Dythne P. Dacudao" class="framed-image">
+                <h3>Dr. Dythne P. Dacudao</h3>
+                <p class="department-label">CICI FACULTY</p>
+                
+            </div>
+               <div class="card">
+                <img src="12.jfif" alt="Dr. Analiza G. Alingalan" class="framed-image">
+                <h3>Dr. Analiza G. Alingalan</h3>
+                <p class="department-label">CICI FACULTY</p>
+                
+            </div>
+               <div class="card">
+                <img src="8.jfif" alt="Instr. Dave Allan Tagacay" class="framed-image">
+                <h3>Instr. Dave Allan Tagacay </h3>
+                <p class="department-label">CICI Instructor</p>
+                
+            </div>
+               <div class="card">
+                <img src="13.jfif" alt="Instr. Ivan Silvestre" class="framed-image">
+                <h3>Instr. Ivan Silvestre</h3>
+                <p class="department-label">CICI Instructor</p>
+                
+            </div>
+               <div class="card">
+                <img src="14.jfif" alt="Andrea Delos Santos" class="framed-image">
+                <h3>Andrea Delos Santos</h3>
+                <p class="department-label">CICI Staff</p>
+
+            </div>
+            <div class="card">
+                <img src="15.jfif" alt="Michael Borcillo" class="framed-image">
+                <h3>Michael Borcillo</h3>
+                <p class="department-label">CICI Staff</p>
+                
+            </div>  
+           
+                
+            </div>
+
+    </div>
+
+</body>
+</html>
