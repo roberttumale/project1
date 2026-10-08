@@ -114,20 +114,22 @@
             box-shadow: 0 12px 30px rgba(212, 175, 55, 0.4);
         }
 
-        /* Beautiful Ornate Frame Style using image_0.png */
+        /* Gold picture frame (pure CSS, no extra image needed) */
         .framed-image {
             display: block;
+            box-sizing: border-box;
             margin: 0 auto 12px auto;
-            border: 32px solid transparent;
-            border-image-source: url('image_0.png');
-            border-image-slice: 35 35 35 35 fill;
-            border-image-repeat: repeat;
-            width: 130px;
-            height: 165px;
+            width: 170px;
+            height: 210px;
             object-fit: cover;
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
-            background-color: #ffffff;
-            padding: 6px;
+            object-position: center 20%;
+            padding: 5px;
+            background: #ffffff;
+            border: 5px solid #d4af37;
+            border-radius: 6px;
+            outline: 2px solid #0b132b;
+            outline-offset: -1px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35), inset 0 0 0 2px #0b132b;
         }
 
         .card h3 {
@@ -260,7 +262,7 @@
         </div>
         <div class="card-container">
             <div class="card">
-                <img src="1.JFIF" alt="Nordy D. Siason Jr, edD, Ceso VI - University President" class="framed-image">
+                <img src="1.jfif" alt="Nordy D. Siason Jr, edD, Ceso VI - University President" class="framed-image">
                 <h3>Nordy D. Siason Jr, edD, Ceso VI</h3>
                 <p>University President</p>
             </div>
@@ -273,7 +275,7 @@
         <div class="card-container">
             <div class="card">
                 <img src="2.jfif" alt="Dr. Michael B. Dizon- Campus Administrator" class="framed-image">
-                <h3>Dr. John Smith</h3>
+                <h3>Dr. Michael B. Dizon</h3>
                 <p>Campus Administrator</p>
             </div>
             <div class="card">
@@ -297,7 +299,7 @@
             <div class="card">
                 <img src="5.jfif" alt="Dean, Agreculture [AG] - Dean of College of Agre culture" class="framed-image">
                 <h3>DR. Noli L. Gerona</h3>
-                <p class="department-label">Dean, Agreculture [AG]</p>
+                <p class="department-label">College of Agriculture</p>
                 <p>Dean</p>
             </div>
             <div class="card">
@@ -329,13 +331,13 @@
 CICI</p>
             </div>
             <div class="card">
-                <img src="9.JFIF" alt="Dr. Wenna J. Bulnes " class="framed-image">
+                <img src="9.jfif" alt="Dr. Wenna J. Bulnes " class="framed-image">
                 <h3>Dr. Wenna J. Bulnes</h3>
                 <p class="department-label">CICI FACULTY</p>
                 
             </div>
             <div class="card">
-                <img src="10.JFIF" alt="Dr. Ian P. Sugatan" class="framed-image">
+                <img src="10.jfif" alt="Dr. Ian P. Sugatan" class="framed-image">
                 <h3>Dr. Ian P. Sugatan</h3>
                 <p class="department-label">CICI FACULTY</p>
                 
@@ -390,8 +392,7 @@ CICI</p>
 
             <!-- Main view: events + day buttons -->
             <div id="acqMain">
-                <h2>Acquaintance Events</h2>
-                <div id="eventList"></div>
+                <h2>Acquaintance</h2>
                 <div class="day-buttons">
                     <button class="day-btn" onclick="showDay('day1')">1st Day Event</button>
                     <button class="day-btn" onclick="showDay('day2')">2nd Day Event</button>
@@ -414,12 +415,6 @@ CICI</p>
 
     <script>
         // ===== EDIT HERE =====
-        const events = [
-            { month: "Oct", day: "15", title: "Welcome Acquaintance Party", desc: "Meet the administration, deans, and faculty." },
-            { month: "Oct", day: "22", title: "Meet & Greet with CICI Faculty", desc: "Open session for students and staff." },
-            { month: "Nov", day: "05", title: "Campus Leadership Forum", desc: "Dialogue with campus leaders." }
-        ];
-
         // Put your files in these folders (same folder as index.html), or change the names below
         const days = {
             day1: {
@@ -434,12 +429,6 @@ CICI</p>
             }
         };
         // =====================
-
-        document.getElementById('eventList').innerHTML = events.map(e => `
-            <div class="event">
-                <div class="event-date"><span>${e.day}</span><small>${e.month}</small></div>
-                <div class="event-info"><h4>${e.title}</h4><p>${e.desc}</p></div>
-            </div>`).join('');
 
         function showDay(key) {
             const d = days[key];
