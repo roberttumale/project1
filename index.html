@@ -218,6 +218,28 @@
         .event-date small { font-size: 0.75rem; text-transform: uppercase; }
         .event-info h4 { margin: 0 0 4px 0; font-size: 1.05rem; }
         .event-info p { margin: 0; font-size: 0.9rem; color: #cfd6e6; }
+
+        /* Day buttons & media */
+        .day-buttons { display: flex; gap: 12px; margin: 22px 0 6px; }
+        .day-btn {
+            flex: 1; padding: 12px; border-radius: 10px;
+            border: 2px solid #d4af37; background: transparent; color: #fff;
+            font-weight: 700; font-size: 1rem; cursor: pointer; transition: 0.2s;
+        }
+        .day-btn:hover, .day-btn.active { background: #d4af37; color: #0b132b; }
+        .section-title { color: #d4af37; margin: 22px 0 10px; font-size: 1.05rem; text-transform: uppercase; letter-spacing: 1px; }
+        .back-btn { background: none; border: none; color: #d4af37; cursor: pointer; font-size: 0.95rem; margin-bottom: 8px; padding: 0; }
+        .back-btn:hover { text-decoration: underline; }
+        .photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+        .photo-grid img, .photo-ph {
+            width: 100%; height: 130px; object-fit: cover; border-radius: 8px;
+            border: 2px solid rgba(212,175,55,0.5); cursor: zoom-in; background: rgba(255,255,255,0.08);
+        }
+        .photo-ph { display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: #cfd6e6; text-align: center; cursor: default; }
+        .video-list video { width: 100%; border-radius: 10px; margin-bottom: 12px; background: #000; border: 2px solid rgba(212,175,55,0.5); }
+        .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 200; align-items: center; justify-content: center; }
+        .lightbox.open { display: flex; }
+        .lightbox img { max-width: 94%; max-height: 92%; border-radius: 8px; }
     </style>
 </head>
 <body>
@@ -365,18 +387,53 @@ CICI</p>
     <div class="modal-overlay" id="acqModal" onclick="if(event.target===this)closeAcq()">
         <div class="modal">
             <button class="modal-close" onclick="closeAcq()" aria-label="Close">&times;</button>
-            <h2>Acquaintance Events</h2>
-            <div id="eventList"></div>
+
+            <!-- Main view: events + day buttons -->
+            <div id="acqMain">
+                <h2>Acquaintance Events</h2>
+                <div id="eventList"></div>
+                <div class="day-buttons">
+                    <button class="day-btn" onclick="showDay('day1')">1st Day Event</button>
+                    <button class="day-btn" onclick="showDay('day2')">2nd Day Event</button>
+                </div>
+            </div>
+
+            <!-- Day view: pictures + videos -->
+            <div id="acqDay" style="display:none;">
+                <button class="back-btn" onclick="backToMain()">&larr; Back</button>
+                <h2 id="dayTitle"></h2>
+                <div class="section-title">Pictures</div>
+                <div class="photo-grid" id="photoGrid"></div>
+                <div class="section-title">Videos</div>
+                <div class="video-list" id="videoList"></div>
+            </div>
         </div>
     </div>
 
+    <div class="lightbox" id="lightbox" onclick="this.classList.remove('open')"><img id="lightboxImg" alt=""></div>
+
     <script>
-        // Edit this list to add, change, or remove events
+        // ===== EDIT HERE =====
         const events = [
             { month: "Oct", day: "15", title: "Welcome Acquaintance Party", desc: "Meet the administration, deans, and faculty." },
             { month: "Oct", day: "22", title: "Meet & Greet with CICI Faculty", desc: "Open session for students and staff." },
             { month: "Nov", day: "05", title: "Campus Leadership Forum", desc: "Dialogue with campus leaders." }
         ];
+
+        // Put your files in these folders (same folder as index.html), or change the names below
+        const days = {
+            day1: {
+                title: "1st Day Event",
+                photos: ["acquaintance/day1/photo1.jpg", "acquaintance/day1/photo2.jpg", "acquaintance/day1/photo3.jpg", "acquaintance/day1/photo4.jpg"],
+                videos: ["acquaintance/day1/video1.mp4"]
+            },
+            day2: {
+                title: "2nd Day Event",
+                photos: ["acquaintance/day2/photo1.jpg", "acquaintance/day2/photo2.jpg", "acquaintance/day2/photo3.jpg", "acquaintance/day2/photo4.jpg"],
+                videos: ["acquaintance/day2/video1.mp4"]
+            }
+        };
+        // =====================
 
         document.getElementById('eventList').innerHTML = events.map(e => `
             <div class="event">
@@ -384,9 +441,36 @@ CICI</p>
                 <div class="event-info"><h4>${e.title}</h4><p>${e.desc}</p></div>
             </div>`).join('');
 
+        function showDay(key) {
+            const d = days[key];
+            document.getElementById('dayTitle').textContent = d.title;
+            document.getElementById('photoGrid').innerHTML = d.photos.map(p =>
+                `<img src="${p}" alt="${d.title} photo" onclick="zoom(this.src)" onerror="this.outerHTML='<div class=&quot;photo-ph&quot;>Add photo<br>${p.split('/').pop()}</div>'">`).join('');
+            document.getElementById('videoList').innerHTML = d.videos.map(v =>
+                `<video controls preload="metadata" src="${v}"></video>`).join('');
+            document.getElementById('acqMain').style.display = 'none';
+            document.getElementById('acqDay').style.display = 'block';
+        }
+        function backToMain() {
+            document.querySelectorAll('#videoList video').forEach(v => v.pause());
+            document.getElementById('acqDay').style.display = 'none';
+            document.getElementById('acqMain').style.display = 'block';
+        }
+        function zoom(src) {
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightbox').classList.add('open');
+        }
         function openAcq() { document.getElementById('acqModal').classList.add('open'); }
-        function closeAcq() { document.getElementById('acqModal').classList.remove('open'); }
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAcq(); });
+        function closeAcq() {
+            backToMain();
+            document.getElementById('acqModal').classList.remove('open');
+        }
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                document.getElementById('lightbox').classList.remove('open');
+                closeAcq();
+            }
+        });
     </script>
 </body>
 </html>
